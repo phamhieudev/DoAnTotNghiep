@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!-- Original URL: http://www.urbanui.com/serein/template/demo/vertical-default-light/pages/tables/data-table.html
+Date Downloaded: 11/30/2018 1:56:41 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Quản Trị NhaDatTDM</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../../../vendors/iconfonts/mdi/font/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="../../../../vendors/css/vendor.bundle.base.css" />
+  <link rel="stylesheet" href="../../../../vendors/css/vendor.bundle.addons.css" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../../../css/vertical-layout-light/style.css" />
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../../../../images/favicon.png" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
+  <script src="/controller/sanphamctyController.js"></script>
+</head>
+
+<body>
+  <div class="container-scroller" ng-app="sanphamctyApp" ng-controller="sanphamctyCtrl">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../../../images/logo.svg" alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../../../images/logo-mini.svg" alt="logo" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+       
+          
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <span style="text-overflow:ellipsis; color: black;">Xin chào: {{nameadmin}}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" ng-click="logout()">
+                <i class="mdi mdi-logout text-primary"></i>
+                Đăng Xuất
+              </a>
+            </div>
+          </li>
+          
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="mdi mdi-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close mdi mdi-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles primary"></div>
+            <div class="tiles success"></div>
+            <div class="tiles warning"></div>
+            <div class="tiles danger"></div>
+            <div class="tiles light"></div>
+            <div class="tiles info"></div>
+            <div class="tiles dark"></div>
+            <div class="tiles default"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- partial -->
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item" id="admin">
+            <a class="nav-link" href="admin.html" >
+                <i class="mdi mdi-account menu-icon"></i>
+                <span class="menu-title">Danh Sách Admin</span>
+            </a>
+        </li>
+        
+          <li class="nav-item">
+            <a class="nav-link" href="vungxa.html">
+              <i class="mdi mdi-trophy-award menu-icon"></i>
+              <span class="menu-title">Danh Sách Phường\Xã</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="duong.html">
+              <i class="mdi mdi-call-split menu-icon"></i>
+              <span class="menu-title">Danh Sách Đường</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sanphamcty.html">
+              <i class="mdi mdi-home menu-icon"></i>
+              <span class="menu-title">Quản Lý Tin Đăng Công Ty</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="danhsachquantamsp.html">
+              <i class="mdi mdi-account-multiple-outline menu-icon"></i>
+              <span class="menu-title">Danh Sách Quan Tâm BĐS</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="customer.html">
+              <i class="mdi mdi-account-multiple-outline menu-icon"></i>
+              <span class="menu-title">Quản Lý Người Dùng</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sanphamnguoidung.html">
+              <i class="mdi mdi-home-outline menu-icon"></i>
+              <span class="menu-title">Quản Lý Tin Đăng Người Dùng</span>
+            </a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" href="tintuc.html">
+              <i class="mdi mdi-newspaper menu-icon"></i>
+              <span class="menu-title">Quản Lý Tin Tức</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="map.html">
+              <i class="mdi mdi-map-marker-outline menu-icon"></i>
+              <span class="menu-title">Bản Đồ</span>
+              <!-- <i class="menu-arrow"></i> -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="thongke.html">
+              <i class="mdi mdi-chart-line menu-icon"></i>
+              <span class="menu-title">Thống Kê</span>
+              <!-- <i class="menu-arrow"></i> -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="sanphamchoduyet.html">
+                <i class="mdi mdi-spellcheck menu-icon"></i>
+                <span class="menu-title">Bài Đăng Chờ Duyệt</span>
+                <!-- <i class="menu-arrow"></i> -->
+            </a>
+        </li>
+
+        </ul>
+    </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Bất Động Sản Công Ty</h4>
+              <div class="d-flex table-responsive">
+                <div class="btn-group mr-2">
+                    <button class="btn btn-sm btn-primary"  onclick="location.href='themsanphamcty.html'"><i class="mdi mdi-plus-circle-outline"></i> Thêm</button>
+                </div>
+                <div class="btn-group mr-2">
+                </div>
+            </div>
+            <div class="col-4 mt-3" id="chonloai">
+              <h4 class="card-title"> </h4>
+              <label class="mr-sm-2" for="inlineFormCustomSelect">Chọn Loại Tin Xem</label>
+              <div class="form-group">
+                <select class="form-control" name="idTrangthaigd" id="idTrangthaigd" ng-model="idTrangthaigd"
+                  ng-change="myFuncLoai(idTrangthaigd)">
+                  <option ng-repeat="x in Trangthaigds | orderBy: 'idTrangthaigd'"
+                    value="{{x.idTrangthaigd}}">{{x.tenTrangthaigd}}</option>
+                </select>
+              </div>
+            </div>
+              <div class="table-responsive mt-2" id="show">
+                <table class="table mt-3 border-top">
+                  <thead>
+                    <tr>
+                      <th>Hình Ảnh</th>
+                      <th>ID</th>
+                      <th>Tên Bất Động Sản</th>
+                      <th>Loại Bất Động Sản</th>
+                      <th>Phường</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody ng-repeat="x in sanphamctys | orderBy: 'idSanphamcty' | filter: search">
+                    <tr  data-toggle="collapse" data-target="#{{x.idSanphamcty}}" aria-expanded="true" aria-controls="{{x.idSanphamcty}}">
+                      <td style="width:6.25em;height:6.25em;"><img ng-src="{{x.hinhanh.url}}" style="width:19.25em;height:11.25em;border-radius:0"></td>
+                      <td>{{x.idSanphamcty}}</td>
+                      <td>{{x.nameSanpham_cty}}</td>
+                      <td>{{x.loaisanpham.tenLoaisp}}</td>
+                      <td>{{x.loaisanpham.tenLoaisp}}</td>
+                      <td>
+                        <button type="button" data-toggle="modal" data-target="#updateModal" class="btn btn-secondary" ng-click="editsanphamcty(x)">Cập Nhật</button>
+                        <button type="button" data-toggle="modal" data-target="#updateModal" class="btn btn-danger" ng-click="edithinhanhsanphamcty(x)">Cập Nhật Hình Ảnh</button>
+                        <button type="button" ng-click="dagiaodich(x)" class="btn btn-dark">Đã giao dịch</button>
+                      </td>
+                    </tr>
+                    <tr id="{{x.idSanphamcty}}" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                      <td colspan="9">
+                        <table width="100%">
+                            <tr>
+                              <th scope="col" style="width: 50%">Phường</th>
+                              <td>{{x.vungxa.tenVungxa}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Hướng</th>
+                              <td>{{x.huong.nameHuong}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Ngày Nhập</th>
+                              <td>{{x.ngaynhapSanpham_cty | date:'dd-MM-yyyy'}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Chiều Rộng</th>
+                              <td>{{x.chieurongSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Chiều Dài</th>
+                              <td>{{x.chieudaiSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Diện Tích</th>
+                              <td>{{x.dientichSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Tổng Giá</th>
+                              <td>{{x.giaSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Đơn vị Giá</th>
+                              <td>{{x.donvigia.tenDonvigia}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Mô Tả</th>
+                              <td>{{x.motatindang.noidung}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Số Tầng</th>
+                              <td>{{x.sotangSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Hẻm</th>
+                              <td>{{x.chieuronghem.tenHem}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Pháp Lý</th>
+                              <td>{{x.phaply.tenphaply}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Phần Trăm Thổ Cư</th>
+                              <td>{{x.thocuSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Số Phòng Ngủ</th>
+                              <td>{{x.sophongnguSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Số Phòng Toilet</th>
+                              <td>{{x.sotoiletSanpham_cty}}</td>
+                            </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-responsive mt-2" id="show1">
+                <table class="table mt-3 border-top">
+                  <thead>
+                    <tr>
+                      <th>Hình Ảnh</th>
+                      <th>ID</th>
+                      <th>Tên Bất Động Sản</th>
+                      <th>Loại Bất Động Sản</th>
+                      <th>Phường</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody ng-repeat="x in sanphamctys | orderBy: 'idSanphamcty' | filter: search">
+                    <tr  data-toggle="collapse" data-target="#{{x.idSanphamcty}}" aria-expanded="true" aria-controls="{{x.idSanphamcty}}">
+                      <td style="width:6.25em;height:6.25em;"><img ng-src="{{x.hinhanh.url}}" style="width:19.25em;height:11.25em;border-radius:0"></td>
+                      <td>{{x.idSanphamcty}}</td>
+                      <td>{{x.nameSanpham_cty}}</td>
+                      <td>{{x.loaisanpham.tenLoaisp}}</td>
+                      <td>{{x.loaisanpham.tenLoaisp}}</td>
+                      <td>
+
+                      </td>
+                    </tr>
+                    <tr id="{{x.idSanphamcty}}" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                      <td colspan="9">
+                        <table width="100%">
+                            <tr>
+                              <th scope="col" style="width: 50%">Phường</th>
+                              <td>{{x.vungxa.tenVungxa}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Hướng</th>
+                              <td>{{x.huong.nameHuong}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Ngày Nhập</th>
+                              <td>{{x.ngaynhapSanpham_cty | date:'dd-MM-yyyy'}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Chiều Rộng</th>
+                              <td>{{x.chieurongSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Chiều Dài</th>
+                              <td>{{x.chieudaiSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Diện Tích</th>
+                              <td>{{x.dientichSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Tổng Giá</th>
+                              <td>{{x.giaSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Đơn vị Giá</th>
+                              <td>{{x.donvigia.tenDonvigia}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Mô Tả</th>
+                              <td>{{x.motatindang.noidung}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Số Tầng</th>
+                              <td>{{x.sotangSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Hẻm</th>
+                              <td>{{x.chieuronghem.tenHem}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Pháp Lý</th>
+                              <td>{{x.phaply.tenphaply}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Phần Trăm Thổ Cư</th>
+                              <td>{{x.thocuSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Số Phòng Ngủ</th>
+                              <td>{{x.sophongnguSanpham_cty}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="col">Số Phòng Toilet</th>
+                              <td>{{x.sotoiletSanpham_cty}}</td>
+                            </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="../../../../../../index.html" target="_blank">Urbanui</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="../../../../vendors/js/vendor.bundle.base.js"></script>
+  <script src="../../../../vendors/js/vendor.bundle.addons.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="../../../../js/off-canvas.js"></script>
+  <script src="../../../../js/hoverable-collapse.js"></script>
+  <script src="../../../../js/template.js"></script>
+  <script src="../../../../js/settings.js"></script>
+  <script src="../../../../js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../../../../js/data-table.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>

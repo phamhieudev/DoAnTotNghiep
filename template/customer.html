@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Original URL: http://www.urbanui.com/serein/template/demo/vertical-default-light/pages/tables/data-table.html
+Date Downloaded: 11/30/2018 1:56:41 PM !-->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Quản Trị NhaDatTDM</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../../../vendors/iconfonts/mdi/font/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="../../../../vendors/css/vendor.bundle.base.css" />
+  <link rel="stylesheet" href="../../../../vendors/css/vendor.bundle.addons.css" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../../../css/vertical-layout-light/style.css" />
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../../../../images/favicon.png" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="/controller/nguoidungController.js"></script>
+  <script src="/accesst/md5.js"></script>
+</head>
+
+<body>
+  <div class="container-scroller" ng-app="nguoidungApp" ng-controller="nguoidungCtrl">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../../../images/logo.svg"
+            alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../../../images/logo-mini.svg"
+            alt="logo" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+      
+          
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <span style="text-overflow:ellipsis; color: black;">Xin chào: {{nameadmin}}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" ng-click="logout()">
+                <i class="mdi mdi-logout text-primary"></i>
+                Đăng Xuất
+              </a>
+            </div>
+          </li>
+       
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="mdi mdi-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close mdi mdi-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+            <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
+          </div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme">
+            <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
+          </div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles primary"></div>
+            <div class="tiles success"></div>
+            <div class="tiles warning"></div>
+            <div class="tiles danger"></div>
+            <div class="tiles light"></div>
+            <div class="tiles info"></div>
+            <div class="tiles dark"></div>
+            <div class="tiles default"></div>
+          </div>
+        </div>
+      </div>
+   
+      <!-- partial -->
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item" id="admin">
+            <a class="nav-link" href="admin.html" >
+                <i class="mdi mdi-account menu-icon"></i>
+                <span class="menu-title">Danh Sách Admin</span>
+            </a>
+        </li>
+        
+          <li class="nav-item">
+            <a class="nav-link" href="vungxa.html">
+              <i class="mdi mdi-trophy-award menu-icon"></i>
+              <span class="menu-title">Danh Sách Phường\Xã</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="duong.html">
+              <i class="mdi mdi-call-split menu-icon"></i>
+              <span class="menu-title">Danh Sách Đường</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sanphamcty.html">
+              <i class="mdi mdi-home menu-icon"></i>
+              <span class="menu-title">Quản Lý Tin Đăng Công Ty</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="danhsachquantamsp.html">
+              <i class="mdi mdi-account-multiple-outline menu-icon"></i>
+              <span class="menu-title">Danh Sách Quan Tâm BĐS</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="customer.html">
+              <i class="mdi mdi-account-multiple-outline menu-icon"></i>
+              <span class="menu-title">Quản Lý Người Dùng</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sanphamnguoidung.html">
+              <i class="mdi mdi-home-outline menu-icon"></i>
+              <span class="menu-title">Quản Lý Tin Đăng Người Dùng</span>
+            </a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" href="tintuc.html">
+              <i class="mdi mdi-newspaper menu-icon"></i>
+              <span class="menu-title">Quản Lý Tin Tức</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="map.html">
+              <i class="mdi mdi-map-marker-outline menu-icon"></i>
+              <span class="menu-title">Bản Đồ</span>
+              <!-- <i class="menu-arrow"></i> -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="thongke.html">
+              <i class="mdi mdi-chart-line menu-icon"></i>
+              <span class="menu-title">Thống Kê</span>
+              <!-- <i class="menu-arrow"></i> -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="sanphamchoduyet.html">
+                <i class="mdi mdi-spellcheck menu-icon"></i>
+                <span class="menu-title">Bài Đăng Chờ Duyệt</span>
+                <!-- <i class="menu-arrow"></i> -->
+            </a>
+        </li>
+
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Người Dùng</h4>
+              <div class="d-flex table-responsive">
+                <div class="btn-group mr-2">
+                  <button class="btn btn-sm btn-primary" data-toggle="modal"  data-target=".bd-example-modal-xl" ng-click="createnguoidung()"> <i
+                      class="mdi mdi-plus-circle-outline" ></i> Thêm</button>
+                  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"  id="addModal" aria-labelledby="addModalLabel"
+                    aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl" role="document">
+                      <div class="modal-content">
+                        <form name="userForm" ng-submit="submitForm()" novalidate class="css-form">
+                          <div class="card-body">
+                            <h4 class="card-title" id="addModalLabel">THÊM NGƯỜI DÙNG</h4>
+                            <form class="forms-sample">
+                              <div class="form-group">
+                                <label for="tenNguoidung">Tên Người Dùng</label>
+                                <input type="text" class="form-control" name="tenNguoidung" ng-model="tenNguoidung"
+                                  id="tenNguoidung" ng-minlength="3" ng-maxlength="50" ng-required=true />
+                                  <div ng-show="userForm.tenNguoidung.$touched">
+                                    <span style="color:red;margin-top: 2px;
+                                  display: inline-block;" ng-show="userForm.tenNguoidung.$error.required">Vui lòng nhập
+                                  tên!</span>
+                                  </div>
+                      
+                              </div>
+                              <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" type="mail" name="mail" ng-model="mail"
+                                  ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" ng-required=true>
+                                  <div ng-show="userForm.mail.$touched">
+                                    <span style="color:red;margin-top: 2px;
+                                    display: inline-block;" ng-show="userForm.mail.$error.required">Vui lòng nhập </span>
+                                     <span style="color:red;margin-top: 2px;
+                                     display: inline-block;" ng-show="userForm.mail.$error.pattern">Sai định dạng mail </span>
+                                
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label>Số Điện Thoại</label>
+                                <input class="form-control" type="number" name="phone" ng-model="phone"  ng-minlength="10" ng-maxlength="10" ng-required=true >
+             
+                                  <div ng-show="userForm.phone.$touched">
+                                    <span style="color:red;margin-top: 2px;
+                                    display: inline-block;" ng-show="userForm.phone.$error.required">Vui lòng nhập </span>
+                                     <span style="color:red;margin-top: 2px;
+                                     display: inline-block;" ng-show="userForm.phone.$error.minlength">Số điện thoại không nhỏ hơn 10 ký tự. </span>
+                                      <span style="color:red;margin-top: 2px;
+                                      display: inline-block;" ng-show="userForm.phone.$error.maxlength">Số điện thoại không lớn hơn 10 ký tự. </span>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="password" name="password" ng-show="!showPassword"
+                                            ng-model="password"   ng-required=true> 
+                                <input type="text" name="plainPassword" ng-show="showPassword" ng-model="password" 
+                                            ng-required=true> 
+                                <div ng-show="userForm.password.$touched">
+                                  <span style="color:red;margin-top: 2px;
+                                  display: inline-block;" ng-show="userForm.password.$error.required">Vui lòng nhập </span>
+                              </div>
+                                
+                            </div>
+                            <button type="submit" class="btn btn-primary"  ng-disabled="userForm.$invalid" data-dismiss="{{save1}}" ng-click="addnguoidung(tenNguoidung,mail,phone,password)">Thêm</button>
+                            <button class="btn btn-dark float-right" data-dismiss="modal" >Đóng</button>
+                            </form>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="btn-group mr-2">
+                </div>
+                <div class="btn-group ml-auto mr-2 border-0 d-none d-md-block">
+                </div>
+
+              </div>
+              <div class="table-responsive mt-2">
+                <table class="table mt-3 border-top">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Tên Người Dùng</th>
+                      <th>Email Người Dùng</th>
+                      <th>Điện Thoại Người Dùng</th>
+                  
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody ng-repeat="x in nguoidungs | orderBy: 'idNguoidung' | filter: search">
+                    <tr>
+                      <td>{{x.idNguoidung}}</td>
+                      <td>{{x.tenNguoidung}}</td>
+                      <td>{{x.mail}}</td>
+                      <td>{{x.phone}}</td>
+                  
+                      <td>
+                        <button type="button" data-toggle="modal" data-target="#updateModal" class="btn btn-secondary"
+                          ng-click="editnguoidung(x)">Cập Nhật</button>
+                          <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"  id="updateModal" aria-labelledby="updateModalLabel"
+                          aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-xl" role="document">
+                            <div class="modal-content">
+                              <form name="userForm1" ng-submit="submitForm()" novalidate class="css-form">
+                                <div class="card-body">
+                                  <h4 class="card-title" id="addModalLabel">CẬP NHẬT NGƯỜI DÙNG</h4>
+                                  <form class="forms-sample">
+                                    <div class="form-group">
+                                      <label for="idLoaisp">ID</label>
+                                      <input type="text" class="form-control" name="idNguoidung" ng-model="idNguoidung"
+                                        id="idNguoidung" disabled required />
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="tenNguoidung">Tên Người Dùng</label>
+                                      <input type="text" class="form-control" name="tenNguoidung" ng-model="tenNguoidung"
+                                        id="tenNguoidung" ng-minlength="3" ng-maxlength="50" ng-required=true />
+                                        <div ng-show="userForm.tenNguoidung.$touched">
+                                          <span style="color:red;margin-top: 2px;
+                                        display: inline-block;" ng-show="userForm.tenNguoidung.$error.required">Vui lòng nhập
+                                        tên!</span>
+                                        </div>
+                            
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Email</label>
+                                      <input class="form-control" type="mail" name="mail" ng-model="mail"
+                                        ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" ng-required=true>
+                                        <div ng-show="userForm.mail.$touched">
+                                          <span style="color:red;margin-top: 2px;
+                                          display: inline-block;" ng-show="userForm.mail.$error.required">Vui lòng nhập </span>
+                                           <span style="color:red;margin-top: 2px;
+                                           display: inline-block;" ng-show="userForm.mail.$error.pattern">Sai định dạng mail </span>
+                                      
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Số Điện Thoại ( vui lòng bỏ số 0 đầu )</label>
+                                      <input class="form-control" type="number" name="phone" ng-model="phone"  ng-minlength="9" ng-maxlength="9" ng-required=true >
+                   
+                                        <div ng-show="userForm.phone.$touched">
+                                          <span style="color:red;margin-top: 2px;
+                                          display: inline-block;" ng-show="userForm.phone.$error.required">Vui lòng nhập </span>
+                                           <span style="color:red;margin-top: 2px;
+                                           display: inline-block;" ng-show="userForm.phone.$error.minlength">Vui lòng nhập số sau số 0 đầu. </span>
+                                            <span style="color:red;margin-top: 2px;
+                                            display: inline-block;" ng-show="userForm.phone.$error.maxlength">Vui lòng nhập số sau số 0 đầu.. </span>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Password</label>
+                                      <input class="form-control" type="password" name="password" ng-show="!showPassword"
+                                                  ng-model="password"   ng-required=true> 
+                                      <input type="text" name="plainPassword" ng-show="showPassword" ng-model="password" 
+                                                  ng-required=true> 
+                                      <div ng-show="userForm.password.$touched">
+                                        <span style="color:red;margin-top: 2px;
+                                        display: inline-block;" ng-show="userForm.password.$error.required">Vui lòng nhập </span>
+                                    </div>
+                                      
+                                  </div>
+                                  <button type="submit" class="btn btn-primary"  ng-disabled="userForm1.$invalid" data-dismiss="{{save2}}" ng-click="updatenguoidung(idNguoidung,tenNguoidung,mail,phone,password)"  >Cập Nhật</button>
+                                  <button class="btn btn-dark float-right" data-dismiss="modal" >Đóng</button>  
+                                </form>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <button type="button" ng-click="xoanguoidung(x)" class="btn btn-dark">Xóa</button> -->
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a
+                href="../../../../../../index.html" target="_blank">Urbanui</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
+                class="mdi mdi-heart text-danger"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="../../../../vendors/js/vendor.bundle.base.js"></script>
+  <script src="../../../../vendors/js/vendor.bundle.addons.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="../../../../js/off-canvas.js"></script>
+  <script src="../../../../js/hoverable-collapse.js"></script>
+  <script src="../../../../js/template.js"></script>
+  <script src="../../../../js/settings.js"></script>
+  <script src="../../../../js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../../../../js/data-table.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>

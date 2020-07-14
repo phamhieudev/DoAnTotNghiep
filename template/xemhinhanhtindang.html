@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!-- Original URL: http://www.urbanui.com/serein/template/demo/vertical-default-light/pages/maps/vector-map.html
+Date Downloaded: 11/30/2018 1:56:42 PM !-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Quản Trị NhaDatTDM</title>
+  <!-- plugins:css -->
+  <!-- bootstrap -->
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<!--  -->
+  <link rel="stylesheet" href="../../../../vendors/iconfonts/mdi/font/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="../../../../vendors/css/vendor.bundle.base.css" />
+  <link rel="stylesheet" href="../../../../vendors/css/vendor.bundle.addons.css" />
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../../../../css/vertical-layout-light/style.css" />
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../../../../images/favicon.png" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="/controller/xemanhtindangController.js"></script>
+
+
+
+</head>
+
+<body>
+  <div class=" container-scroller"  ng-app="xemanhtindangApp" ng-controller="xemanhtindangCtrl">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../../../images/logo.svg" alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../../../images/logo-mini.svg" alt="logo" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+        
+        
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <span style="text-overflow:ellipsis; color: black;">Xin chào: {{nameadmin}}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" ng-click="logout()">
+                <i class="mdi mdi-logout text-primary"></i>
+                Đăng Xuất
+              </a>
+            </div>
+          </li>
+          
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="mdi mdi-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close mdi mdi-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles primary"></div>
+            <div class="tiles success"></div>
+            <div class="tiles warning"></div>
+            <div class="tiles danger"></div>
+            <div class="tiles light"></div>
+            <div class="tiles info"></div>
+            <div class="tiles dark"></div>
+            <div class="tiles default"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- partial -->
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item" id="admin">
+            <a class="nav-link" href="admin.html" >
+                <i class="mdi mdi-account menu-icon"></i>
+                <span class="menu-title">Danh Sách Admin</span>
+            </a>
+        </li>
+        
+          <li class="nav-item">
+            <a class="nav-link" href="vungxa.html">
+              <i class="mdi mdi-trophy-award menu-icon"></i>
+              <span class="menu-title">Danh Sách Phường\Xã</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="duong.html">
+              <i class="mdi mdi-call-split menu-icon"></i>
+              <span class="menu-title">Danh Sách Đường</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sanphamcty.html">
+              <i class="mdi mdi-home menu-icon"></i>
+              <span class="menu-title">Quản Lý Tin Đăng Công Ty</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="danhsachquantamsp.html">
+              <i class="mdi mdi-account-multiple-outline menu-icon"></i>
+              <span class="menu-title">Danh Sách Quan Tâm BĐS</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="customer.html">
+              <i class="mdi mdi-account-multiple-outline menu-icon"></i>
+              <span class="menu-title">Quản Lý Người Dùng</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sanphamnguoidung.html">
+              <i class="mdi mdi-home-outline menu-icon"></i>
+              <span class="menu-title">Quản Lý Tin Đăng Người Dùng</span>
+            </a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" href="tintuc.html">
+              <i class="mdi mdi-newspaper menu-icon"></i>
+              <span class="menu-title">Quản Lý Tin Tức</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="map.html">
+              <i class="mdi mdi-map-marker-outline menu-icon"></i>
+              <span class="menu-title">Bản Đồ</span>
+              <!-- <i class="menu-arrow"></i> -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="thongke.html">
+              <i class="mdi mdi-chart-line menu-icon"></i>
+              <span class="menu-title">Thống Kê</span>
+              <!-- <i class="menu-arrow"></i> -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="sanphamchoduyet.html">
+                <i class="mdi mdi-spellcheck menu-icon"></i>
+                <span class="menu-title">Bài Đăng Chờ Duyệt</span>
+                <!-- <i class="menu-arrow"></i> -->
+            </a>
+        </li>
+
+        </ul>
+    </nav>
+      <!-- partial -->
+      <div class="main-panel">          
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-12">
+              <div class="card" style="height: 2300px;">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <form name="userForm" ng-submit="submitForm()" novalidate class="css-form">
+                        <div class="card-body">
+                          <h4 class="card-title">CHỈNH SỬA HÌNH ẢNH TIN ĐĂNG BẤT ĐỘNG SẢN CÔNG TY</h4>
+                          <form class="forms-sample">
+                            <div class="row">
+                              <div class="form-group col-12">
+                                <label for="tensanpham">Tên Bất Động Sản</label>
+                                <input type="text" class="form-control" name="tensanpham" ng-model="tensanpham"
+                                  id="tensanpham" ng-disabled='true'/>
+                             
+                              </div>
+                              <div class="col-md-12">
+                                <div class="submit-property__group">
+                                  <div class="submit-property__upload">
+                                      <div class="submit-property__upload-inner">
+                                          <span class="submit-property__upload-desc">Hình Hiện Tại</span>
+                                          
+                                      </div>
+                                      <div id="preview1" ng-repeat="x in hinhanhs">
+                                        <img src="{{x.urlhinh}}" style="height: 220px; margin-top: 10px;">
+                                  
+                                    </div>
+                                  </div><!-- .submit-proeprty__upload -->
+                              </div>
+                                 
+                              </div><!-- .col -->
+                          </div><!-- .row -->
+                       
+
+                        </div>
+                    </div>
+                  </div>
+
+                  <br>
+
+
+                  </form>
+                </div>
+              </div>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="../../../../../../index.html" target="_blank">Urbanui</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+    </div>
+  </div>
+
+  <!-- plugins:js -->
+  
+  <script src="../../../../vendors/js/vendor.bundle.base.js"></script>
+  <script src="../../../../vendors/js/vendor.bundle.addons.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="../../../../js/off-canvas.js"></script>
+  <script src="../../../../js/hoverable-collapse.js"></script>
+  <script src="../../../../js/template.js"></script>
+  <script src="../../../../js/settings.js"></script>
+  <script src="../../../../js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+
+
+  <!-- End custom js for this page-->
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+
+  <script>
+    function previewImages() {
+        var limit = 4;
+       var tonghinhcu = $("#preview1 img").length;
+       var hinhmoidcthem=limit-tonghinhcu;
+        
+        if (this.files.length > hinhmoidcthem) {
+            alert('Bạn chỉ được thêm '+hinhmoidcthem+ " hình ảnh nữa");
+            $('#file-input').val("");
+        }
+        else{
+            var $preview = $('#preview').empty();
+        if (this.files) $.each(this.files, readAndPreview);
+
+        function readAndPreview(i, file) {
+
+            if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                return alert(file.name + " Không Phải là hình ảnh");
+            } // else...
+
+            var reader = new FileReader();
+
+            $(reader).on("load", function () {
+                $preview.append($("<img/>", { src: this.result, height: 200 }));
+            });
+
+            reader.readAsDataURL(file);
+
+        }
+        }
+        
+
+    }
+
+    $('#file-input').on("change", previewImages);
+</script>
+
+</html>
